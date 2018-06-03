@@ -24,21 +24,21 @@ export class Iwe7UrlService {
     return this.env.root;
   }
 
-  setEnvRoot(root: string) {
+  setEnvRoot(root: string): this {
     this.env.root = root;
     return this;
   }
 
-  setEnvUniacid(i: string) {
+  setEnvUniacid(i: string): this {
     this.env.i = i;
     return this;
   }
 
-  getUrl(params: any = {}) {
+  getUrl(params: any = {}): string {
     return getUrl(params);
   }
 
-  getMobileUrl(_do: string, _params: any = {}) {
+  getMobileUrl(_do: string, _params: any = {}): string {
     _params["do"] = _do;
     _params["i"] = this.env.i;
     _params["m"] = this.env.m;
@@ -47,7 +47,7 @@ export class Iwe7UrlService {
     return `${this.env.root}app/index.php${this.getUrl(_params)}`;
   }
 
-  getWebUrl(_do: string, _params: any = {}) {
+  getWebUrl(_do: string, _params: any = {}): string {
     _params["do"] = _do;
     _params["i"] = this.env.i;
     _params["m"] = this.env.m;
@@ -56,7 +56,7 @@ export class Iwe7UrlService {
     return `${this.env.root}web/index.php${this.getUrl(_params)}`;
   }
 
-  getOpenUrl(_open: string, _params: any = {}) {
+  getOpenUrl(_open: string, _params: any = {}): string {
     const url = this.getMobileUrl("open", {
       ..._params,
       ...{ open: _open }
@@ -64,7 +64,7 @@ export class Iwe7UrlService {
     return url;
   }
 
-  getWebOpen(_open: string, _params: any = {}) {
+  getWebOpen(_open: string, _params: any = {}): string {
     return this.getWebUrl("open", {
       ..._params,
       ...{ open: _open }
